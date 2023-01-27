@@ -285,13 +285,13 @@ print(someArray) // [30, 20, 10]
 ---
 
 # 참고 링크
-[zdodev.github](https://zdodev.github.io/uml/swift/UML-Class-Diagram/)
-[nextree](https://www.nextree.co.kr/p6753/)
-[Apple-array 공식문서](https://developer.apple.com/documentation/swift/array)
-[개발자아라찌](https://apple-apeach.tistory.com/8)
-[개발자소들이](https://babbab2.tistory.com/84)
-[dudu-velog](https://velog.io/@aurora_97/Swift-큐)
-[Apple-remove 공식문서](https://developer.apple.com/documentation/swift/array/removelast())
-[Apple-protocol 공식문서](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html)
-[Apple-extension 공식문서](https://docs.swift.org/swift-book/LanguageGuide/Extensions.html)
+[zdodev.github](https://zdodev.github.io/uml/swift/UML-Class-Diagram/) </br>
+[nextree](https://www.nextree.co.kr/p6753/) </br> 
+[Apple-array 공식문서](https://developer.apple.com/documentation/swift/array) </br>
+[개발자아라찌](https://apple-apeach.tistory.com/8) </br>
+[개발자소들이](https://babbab2.tistory.com/84) </br>
+[dudu-velog](https://velog.io/@aurora_97/Swift-큐) </br>
+[Apple-remove 공식문서](https://developer.apple.com/documentation/swift/array/removelast()) </br>
+[Apple-protocol 공식문서](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html) </br>
+[Apple-extension 공식문서](https://docs.swift.org/swift-book/LanguageGuide/Extensions.html) </br>
 
