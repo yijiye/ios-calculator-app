@@ -74,7 +74,7 @@ final class CalculatorViewController: UIViewController {
         if isFinishedCalculating {
             numberInput.text = Expression.zero
         } else {
-            numberInput.text = Expression.empty
+            numberInput.text = Expression.zero
         }
     }
     
