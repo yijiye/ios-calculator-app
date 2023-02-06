@@ -14,4 +14,5 @@ enum Expression {
     static let blank = " "
     static let comma = ","
     static let error = "error"
+    static let nan = "NaN"
 }

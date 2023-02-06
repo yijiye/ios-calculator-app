@@ -22,15 +22,15 @@ final class CalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     @IBAction private func operatorButtonTapped(_ sender: UIButton) {
-        restartCalculate()
+        restartCalculate() //
         guard let senderSign = sender.currentTitle,
               let operand = numberInput.text else { return }
         let isNotZeroOperand = ![Expression.zero, Expression.doubleZero].contains(operand)
         let isFinishedDot = !operand.hasSuffix(Expression.dot)
-        let hasStackViewOrOperad = !calculatorItemsStackView.subviews.isEmpty && isNotZeroOperand
-      
+        let hasStackViewOrOperad = !calculatorItemsStackView.subviews.isEmpty && !isNotZeroOperand
+        
         if isNotZeroOperand && isFinishedDot {
             addStackView()
             operatorInput.text = senderSign
@@ -60,7 +60,8 @@ final class CalculatorViewController: UIViewController {
     
     @IBAction private func changeSignButtonTapped(_ sender: UIButton) {
         guard var currentNumber = numberInput.text,
-              currentNumber != Expression.zero else { return }
+              currentNumber != Expression.zero,
+              currentNumber != Expression.nan else { return }
         
         if let minus = currentNumber.firstIndex(of: Character(Expression.minus)) {
             currentNumber.remove(at: minus)
@@ -71,11 +72,7 @@ final class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func CEButtonTapped(_ sender: UIButton) {
-        if isFinishedCalculating {
-            numberInput.text = Expression.zero
-        } else {
-            numberInput.text = Expression.zero
-        }
+        numberInput.text = Expression.zero
     }
     
     @IBAction private func ACButtonTapped(_ sender: UIButton) {
@@ -98,7 +95,7 @@ final class CalculatorViewController: UIViewController {
         if let checkDecimalPoint = Double(operandStackLabel) {
             operandStackLabel = String(checkDecimalPoint)
         }
-
+        
         let stackLabel = UILabel()
         stackLabel.text = operatorStackLabel + Expression.blank + operandStackLabel
         stackLabel.adjustsFontForContentSizeCategory = true
@@ -148,7 +145,7 @@ final class CalculatorViewController: UIViewController {
         let calculateItem = arrangeCalculateItems()
         var formula = ExpressionParser.parse(from: calculateItem)
         guard let resultValue = formula.result() else { return Expression.empty }
-     
+        
         return String(resultValue)
     }
     
@@ -161,7 +158,7 @@ final class CalculatorViewController: UIViewController {
                 calculateItems.append(value)
             }
         }
-        
+       
         return calculateItems.map { $0.components(separatedBy: Expression.blank).joined() }.joined(separator: Expression.empty)
     }
 }

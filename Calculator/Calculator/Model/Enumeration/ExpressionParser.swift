@@ -24,9 +24,9 @@ enum ExpressionParser {
         var result: [String] = [input]
         
         Operator.allCases.forEach { `operator` in
-            result = result.map {
+            result = result.flatMap {
                 $0.split(with: `operator`.rawValue)
-            }.flatMap{ $0 }
+            }
         }
         
         return result

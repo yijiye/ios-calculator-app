@@ -73,7 +73,7 @@ final class ExpressionParserTests: XCTestCase {
     
     func test_10곱하기2더하기5나누기5는_5이다() {
         //given
-        let input = "10x2+5÷5"
+        let input = "10×2+5÷5"
         let expectation: Double = 5
         
         //when
@@ -86,7 +86,7 @@ final class ExpressionParserTests: XCTestCase {
     
     func test_음수가있는경우_10곱하기음수5는_음수50이다() {
         //given
-        let input = "10x-5"
+        let input = "10×-5"
         let expectation: Double = -50
         
         //when
