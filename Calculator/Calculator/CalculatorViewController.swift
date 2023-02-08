@@ -15,7 +15,7 @@ final class CalculatorViewController: UIViewController {
     private var isFinishedCalculating: Bool = false
     private var currentNumber: String = Expression.zero {
         didSet {
-            numberInput.text = applyDecimalPoint(number: currentNumber)
+            numberInput.text = NumberFormatter.applyDecimalPoint(number: currentNumber)
         }
     }
     
@@ -90,12 +90,11 @@ final class CalculatorViewController: UIViewController {
     }
     
     private func addStackView() {
-        guard var operandStackLabel = numberInput.text,
-              let operatorStackLabel = operatorInput.text else {  return  }
-        if let checkDecimalPoint = Double(operandStackLabel) {
-            operandStackLabel = String(checkDecimalPoint)
-        }
+        guard let operand = numberInput.text,
+              let operatorStackLabel = operatorInput.text,
+              let operandLabel = Double(operand) else {  return  }
         
+        let operandStackLabel = NumberFormatter.applyDecimalPoint(number: String(operandLabel))
         let stackLabel = UILabel()
         stackLabel.text = operatorStackLabel + Expression.blank + operandStackLabel
         stackLabel.adjustsFontForContentSizeCategory = true
@@ -129,16 +128,6 @@ final class CalculatorViewController: UIViewController {
         let bottomOffset: CGPoint = CGPointMake(0, calculatorItemsScrollView.contentSize.height)
         calculatorItemsScrollView.setContentOffset(bottomOffset, animated: false)
         calculatorItemsScrollView.layoutSubviews()
-    }
-    
-    private func applyDecimalPoint(number: String) -> String {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        numberFormatter.maximumSignificantDigits = 10
-        guard let operand = Double(number),
-              let result = numberFormatter.string(from: NSNumber(value: operand)) else { return Expression.empty }
-        
-        return result
     }
     
     private func calculate() -> String {
